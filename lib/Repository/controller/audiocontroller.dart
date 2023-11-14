@@ -8,7 +8,6 @@ import 'package:on_audio_query/on_audio_query.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uniplayer/Models/songinfo_model/songinfomodel.dart';
 
-
 import 'package:uniplayer/Resources/const/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,6 +17,7 @@ import '../../view/screens/home_screen/homescreen.dart';
 
 class PlayerController extends GetxController
     with GetSingleTickerProviderStateMixin {
+
   late AnimationController animecontroller;
 
   final audioquery = OnAudioQuery();
@@ -45,6 +45,7 @@ class PlayerController extends GetxController
 
   @override
   void onInit() async {
+    print('getx builded');
     await checkpermissionrequist();
 
     super.onInit();
@@ -70,7 +71,7 @@ class PlayerController extends GetxController
   Future<void> gotohomescreen() async {
     await Future.delayed(const Duration(seconds: 1));
 
-    Get.to(() => const HomeScreen());
+    Get.to(() => HomeScreen());
   }
 
   //QUERYSONGS METHODE;

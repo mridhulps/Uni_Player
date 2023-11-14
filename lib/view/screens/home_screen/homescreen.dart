@@ -15,25 +15,12 @@ import '../../widgets/controllset/conrollset.dart';
 import '../../widgets/customdrawer/customdrawer.dart';
 import '../../widgets/musiclogo/musiclogo.dart';
 
-class HomeScreen extends StatefulWidget {
-   const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+    HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   final state = GlobalKey<ScaffoldState>();
 
   final controll = Get.find<PlayerController>();
-
-  @override
-  void dispose() {
-    Get.delete<PlayerController>();
-    controll.audioplayer.dispose();
-    controll.animecontroller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
