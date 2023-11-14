@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:uniplayer/core/controllbinding/binding.dart';
+import 'package:uniplayer/Repository/controll_bindings/binding.dart';
 
 
 import 'view/screens/splash_screen/splashscreen.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialBinding: initialcontroll(),
+      initialBinding: InitializeController(),
       home: const SplashScreen(),
     );
   }

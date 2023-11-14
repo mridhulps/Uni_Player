@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:on_audio_query/on_audio_query.dart';
-import 'package:uniplayer/controller/audiocontroller.dart';
+import 'package:uniplayer/Repository/controller/audiocontroller.dart';
 
 class SearchList extends StatelessWidget {
   SearchList({super.key});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:uniplayer/controller/audiocontroller.dart';
+import 'package:uniplayer/Repository/controller/audiocontroller.dart';
 
-import 'package:uniplayer/view/const/constants.dart';
+import 'package:uniplayer/Resources/const/constants.dart';
 
 class Controller extends StatelessWidget {
   Controller({super.key});

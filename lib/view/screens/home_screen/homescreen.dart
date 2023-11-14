@@ -3,17 +3,17 @@ import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 
-import 'package:uniplayer/controller/audiocontroller.dart';
+import 'package:uniplayer/Repository/controller/audiocontroller.dart';
 
 import 'package:uniplayer/view/widgets/customappbar/appbar.dart';
 
-import 'package:uniplayer/view/const/constants.dart';
+import 'package:uniplayer/Resources/const/constants.dart';
 
 import 'package:uniplayer/view/widgets/songnameplate/songnameplate.dart';
 
-import '../widgets/controllset/conrollset.dart';
-import '../widgets/customdrawer/customdrawer.dart';
-import '../widgets/musiclogo/musiclogo.dart';
+import '../../widgets/controllset/conrollset.dart';
+import '../../widgets/customdrawer/customdrawer.dart';
+import '../../widgets/musiclogo/musiclogo.dart';
 
 class HomeScreen extends StatefulWidget {
    const HomeScreen({super.key});

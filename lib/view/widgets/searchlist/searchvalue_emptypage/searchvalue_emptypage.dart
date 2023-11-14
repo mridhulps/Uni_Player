@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:uniplayer/controller/audiocontroller.dart';
-import 'package:uniplayer/view/const/constants.dart';
+import 'package:uniplayer/Repository/controller/audiocontroller.dart';
+import 'package:uniplayer/Resources/const/constants.dart';
 import 'package:uniplayer/view/widgets/searchlist/searchlist.dart';
 
 class SearchEmptyPage extends StatelessWidget {

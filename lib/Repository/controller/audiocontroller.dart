@@ -6,14 +6,15 @@ import 'package:just_audio_background/just_audio_background.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 import 'package:permission_handler/permission_handler.dart';
-import 'package:uniplayer/domain/models/songmodel/songmodel.dart';
+import 'package:uniplayer/Models/songinfo_model/songinfomodel.dart';
 
-import 'package:uniplayer/view/const/constants.dart';
+
+import 'package:uniplayer/Resources/const/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:uniplayer/view/widgets/sortingdropdown/sortingdropdown.dart';
 
-import '../view/screens/homescreen.dart';
+import '../../view/screens/home_screen/homescreen.dart';
 
 class PlayerController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -103,7 +104,7 @@ class PlayerController extends GetxController
 
   generatemodel(List<SongModel> modellist) {
     var customlist = modellist
-        .map((e) => CustomModel(
+        .map((e) => SongInfoModel(
               title: e.displayNameWOExt,
               artist: e.artist ?? '',
               id: e.id,

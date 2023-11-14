@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:uniplayer/controller/audiocontroller.dart';
+import 'package:uniplayer/Repository/controller/audiocontroller.dart';
 
-import '../../const/constants.dart';
+import '../../../Resources/const/constants.dart';
 
 class SongNamePlate extends StatelessWidget {
   SongNamePlate({super.key});

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:uniplayer/controller/audiocontroller.dart';
+import 'package:uniplayer/Repository/controller/audiocontroller.dart';
 
-class initialcontroll implements Bindings {
+class InitializeController extends Bindings {
   @override
   void dependencies() {
     Get.put<PlayerController>(PlayerController());
