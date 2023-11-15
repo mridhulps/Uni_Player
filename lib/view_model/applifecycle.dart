@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uniplayer/Repository/controller/audiocontroller.dart';
 
-
 class PlayerLifeCycle extends StatefulWidget {
   final dynamic child;
 
@@ -18,17 +17,10 @@ class _PlayerLifeCycleState extends State<PlayerLifeCycle>
     with WidgetsBindingObserver {
   @override
   void initState() {
-    print('lifecycle builded');
     WidgetsBinding.instance.addObserver(this);
 
     super.initState();
   }
-
-  // @override
-  // void dispose() {
-  //   WidgetsBinding.instance.removeObserver(this);
-  //   super.dispose();
-  // }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {

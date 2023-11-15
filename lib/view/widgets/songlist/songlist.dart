@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:on_audio_query/on_audio_query.dart';
@@ -7,7 +5,7 @@ import 'package:uniplayer/Repository/controller/audiocontroller.dart';
 import 'package:uniplayer/Resources/const/constants.dart';
 
 class BuildSongs extends StatelessWidget {
-  BuildContext drawerctx;
+  final BuildContext drawerctx;
   BuildSongs({super.key, required this.drawerctx});
 
   final controller = Get.find<PlayerController>();
@@ -22,19 +20,21 @@ class BuildSongs extends StatelessWidget {
 
             if (data == null) {
               return const Center(
-                child: CircularProgressIndicator(color: circularindicatorcolor),
+                child: Text(
+                  'No Songs Found',
+                  style: TextStyle(color: whitcolor),
+                ),
               );
             } else {
               controller.tempholdlist.clear();
               controller.tempholdlist.addAll(data);
-              
             }
 
             if (data.isEmpty) {
               return const Center(
                 child: Text(
                   'NO Song Found',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: whitcolor),
                 ),
               );
             } else {
@@ -72,7 +72,6 @@ class BuildSongs extends StatelessWidget {
                         controller.songinformationstreams();
                         controller.animatewidget(true);
                         Scaffold.of(drawerctx).closeDrawer();
-                        
                       },
                     );
                   }),

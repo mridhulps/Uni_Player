@@ -26,9 +26,9 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       state.currentState!.openDrawer();
-      controll.getvariable();
-      var isshuffle = controll.getshuffle();
-      controll.shufflemodeenabled(isshuffle ?? false);
+      // controll.getvariable();
+      // var isshuffle = controll.getshuffle();
+      // controll.shufflemodeenabled(isshuffle ?? false);
     });
     final size = MediaQuery.of(context).size;
 

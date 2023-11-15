@@ -52,7 +52,7 @@ class CustomDrawer extends StatelessWidget {
                   IconButton(
                       color: whitcolor,
                       onPressed: () {
-                        controller.searchisempty.value = true;
+                       // controller.searchisempty.value = true;
                         SystemChannels.textInput.invokeMethod('TextInput.hide');
                       },
                       icon: const Icon(

@@ -5,23 +5,19 @@ import 'package:uniplayer/Repository/controller/audiocontroller.dart';
 import 'package:uniplayer/Resources/const/constants.dart';
 
 
-class CustomAppbar extends StatefulWidget {
- const CustomAppbar({super.key, required this.height});
+class CustomAppbar extends StatelessWidget {
+  CustomAppbar({super.key, required this.height});
 
   final double height;
 
-  @override
-  State<CustomAppbar> createState() => _CustomAppbarState();
-}
-
-class _CustomAppbarState extends State<CustomAppbar> {
   final controll = Get.find<PlayerController>();
+
 //SONGLIST DRAWER;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: widget.height,
+      height: height,
       child: Padding(
         padding: const EdgeInsetsDirectional.only(top: 20, end: 10, start: 10),
         child: Row(

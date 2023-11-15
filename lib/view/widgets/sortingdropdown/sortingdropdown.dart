@@ -26,73 +26,28 @@ class SortingDropdown extends StatelessWidget {
           size: 25,
         ),
         itemBuilder: (context) => [
-              PopupMenuItem(
-                value: Sortitem.date,
-                textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    color: controller.getsort == 'date'
-                        ? Colors.blue
-                        : blackcolor),
-                onTap: () {
-                  controller.getsort = 'date';
-                },
-                child: const Text('Date'),
-              ),
-              PopupMenuItem(
-                value: Sortitem.artist,
-                textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    color: controller.getsort == 'artist'
-                        ? Colors.blue
-                        : blackcolor),
-                onTap: () {
-                  controller.getsort = 'artist';
-                },
-                child: const Text('Artist'),
-              ),
-              PopupMenuItem(
-                value: Sortitem.album,
-                textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    color: controller.getsort == 'album'
-                        ? Colors.blue
-                        : blackcolor),
-                onTap: () {
-                  controller.getsort = 'album';
-                },
-                child: const Text('Album'),
-              ),
-              PopupMenuItem(
-                value: Sortitem.size,
-                textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    color: controller.getsort == 'size'
-                        ? Colors.blue
-                        : blackcolor),
-                onTap: () {
-                  controller.getsort = 'size';
-                },
-                child: const Text('Size'),
-              ),
-              PopupMenuItem(
-                value: Sortitem.duration,
-                textStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    color: controller.getsort == 'duration'
-                        ? Colors.blue
-                        : blackcolor),
-                onTap: () {
-                  controller.getsort = 'duration;';
-                },
-                child: const Text('Duration'),
-              ),
+              customItem('Date', Sortitem.date),
+              customItem('Artist', Sortitem.artist),
+              customItem('Album ', Sortitem.album),
+              customItem('Size', Sortitem.size),
+              customItem('Duration', Sortitem.duration),
             ]);
   }
+}
+
+PopupMenuEntry<Sortitem> customItem(String text, Sortitem type) {
+  final controller = Get.find<PlayerController>();
+
+  return PopupMenuItem<Sortitem>(
+      value: type,
+      textStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontStyle: FontStyle.italic,
+          color: controller.getsort == text ? Colors.blue : blackcolor),
+      onTap: () {
+        controller.getsort = text;
+      },
+      child: Text(text));
 }
 
 enum Sortitem { date, artist, album, size, duration }

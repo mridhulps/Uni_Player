@@ -21,7 +21,7 @@ class SearchEmptyPage extends StatelessWidget {
                       const Align(
                         alignment: Alignment.topCenter,
                         child: Text(
-                          'Song is Empty',
+                          'No Songs Found',
                           style: TextStyle(color: whitcolor,fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),
                         ),
                       ),

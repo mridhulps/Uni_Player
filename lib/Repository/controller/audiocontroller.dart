@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
@@ -17,6 +20,7 @@ import '../../view/screens/home_screen/homescreen.dart';
 
 class PlayerController extends GetxController
     with GetSingleTickerProviderStateMixin {
+  // INSTANCES
 
   late AnimationController animecontroller;
 
@@ -35,17 +39,19 @@ class PlayerController extends GetxController
   Rx<SongSortType> sorttype = SongSortType.DATE_ADDED.obs;
   Rx<Duration> totalduration = Duration.zero.obs;
   Rx<Duration> position = Duration.zero.obs;
+  RxBool searchisempty = true.obs;
+  String getsort = 'Date';
+
+  //LISTS
 
   List<SongModel> tempholdlist = <SongModel>[];
 
   RxList<SongModel> searchresult = <SongModel>[].obs;
 
-  RxBool searchisempty = true.obs;
-  String getsort = 'date';
-
   @override
   void onInit() async {
-    print('getx builded');
+    animecontroller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 40));
     await checkpermissionrequist();
 
     super.onInit();
@@ -53,19 +59,42 @@ class PlayerController extends GetxController
 
   //PERMISSION METHODE;
 
-  Future checkpermissionrequist() async {
-    final requist = await Permission.storage.request();
+  Future<void> checkpermissionrequist() async {
+    PermissionStatus status = await Permission.storage.status;
 
-    if (requist.isGranted) {
-      gotohomescreen();
-      sharedpreference = await SharedPreferences.getInstance();
-      animecontroller = AnimationController(
-          vsync: this, duration: const Duration(seconds: 40));
-    } else if (requist.isDenied) {
-      checkpermissionrequist();
-    } else if (requist.isPermanentlyDenied) {
-      openAppSettings();
+    log(status.toString());
+    if (status == PermissionStatus.granted) {
+      await gotohomescreen();
+    } else if (status.isDenied) {
+      status = await Permission.storage.request();
+    } else if (status.isPermanentlyDenied) {
+      status = await Permission.storage.request();
     }
+
+    if (status.isGranted) {
+      return await gotohomescreen();
+    } else if (status.isDenied) {
+      checkpermissionrequist();
+    } else if (status.isPermanentlyDenied) {
+      SystemChannels.platform.invokeMethod('SystemNavigator.pop()');
+    }
+
+    // if (requist.isGranted) {
+    //  await gotohomescreen();
+
+    //   animecontroller = AnimationController(
+    //       vsync: this, duration: const Duration(seconds: 40));
+    // } else if (requist.isDenied) {
+    //   await Permission.storage.request();
+    // } else if (requist.isDenied) {
+    //   final premissionaccesssed = await openAppSettings();
+
+    //   if (premissionaccesssed == true) {
+    //     gotohomescreen();
+    //   } else {
+    //     SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
+    //   }
+    // }
   }
 
   Future<void> gotohomescreen() async {
@@ -169,7 +198,7 @@ class PlayerController extends GetxController
 
   //SHUFFLE MODEL ENABLE METHODE;
 
-  Future shufflemodeenabled(bool isshuffle) async {
+  Future<void> shufflemodeenabled(bool isshuffle) async {
     await audioplayer.setShuffleModeEnabled(isshuffle);
   }
 
@@ -179,19 +208,19 @@ class PlayerController extends GetxController
     if (value == Sortitem.date) {
       sorttype.value = SongSortType.DATE_ADDED;
 
-      savevariable('date');
+      savevariable('Date');
     } else if (value == Sortitem.artist) {
       sorttype.value = SongSortType.ARTIST;
-      savevariable('artist');
+      savevariable('Artist');
     } else if (value == Sortitem.album) {
       sorttype.value = SongSortType.ALBUM;
-      savevariable('album');
+      savevariable('Album');
     } else if (value == Sortitem.size) {
       sorttype.value = SongSortType.SIZE;
-      savevariable('size');
+      savevariable('Size');
     } else if (value == Sortitem.duration) {
       sorttype.value = SongSortType.DURATION;
-      savevariable('duration');
+      savevariable('Duration');
     }
   }
 
@@ -239,21 +268,21 @@ class PlayerController extends GetxController
     if (getvalue == null) {
       sorttype.value = SongSortType.DATE_ADDED;
     } else {
-      if (getvalue == 'date') {
+      if (getvalue == 'Date') {
         sorttype.value = SongSortType.DATE_ADDED;
-        getsort = 'date';
-      } else if (getvalue == 'artist') {
+        getsort = getvalue;
+      } else if (getvalue == 'Artist') {
         sorttype.value = SongSortType.ARTIST;
-        getsort = 'artist';
+        getsort = getvalue;
       } else if (getvalue == 'album') {
         sorttype.value = SongSortType.ALBUM;
-        getsort = 'album';
-      } else if (getvalue == 'size') {
+        getsort = getvalue;
+      } else if (getvalue == 'Size') {
         sorttype.value = SongSortType.SIZE;
-        getsort = 'size';
-      } else if (getvalue == 'duration') {
+        getsort = getvalue;
+      } else if (getvalue == 'Duration') {
         sorttype.value = SongSortType.DURATION;
-        getsort = 'duration';
+        getsort = getvalue;
       }
     }
   }

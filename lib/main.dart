@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:uniplayer/Repository/controll_bindings/binding.dart';
 import 'package:uniplayer/view_model/applifecycle.dart';
+import 'package:uniplayer/view_model/initialemethodecalling.dart';
 
 
 import 'view/screens/splash_screen/splashscreen.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         initialBinding: InitializeController(),
+        onInit: () => InitialMethodeCalling.initialcalling(),
         home: const SplashScreen(),
       ),
     );
