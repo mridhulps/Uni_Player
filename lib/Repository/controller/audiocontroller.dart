@@ -41,6 +41,9 @@ class PlayerController extends GetxController
   Rx<Duration> position = Duration.zero.obs;
   RxBool searchisempty = true.obs;
   String getsort = 'Date';
+//this variable use of when the app initialy opening that time when  i press the playbutton is change to pause button that fix use this variable;
+
+  bool isEntryplaybutton = true;
 
   //LISTS
 

@@ -70,6 +70,7 @@ class BuildSongs extends StatelessWidget {
                         controller.generatemodel(data);
 
                         controller.songinformationstreams();
+                        controller.isEntryplaybutton=false;
                         controller.animatewidget(true);
                         Scaffold.of(drawerctx).closeDrawer();
                       },

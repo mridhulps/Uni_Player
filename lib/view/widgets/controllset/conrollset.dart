@@ -105,6 +105,7 @@ class Controller extends StatelessWidget {
                                   color: whitcolor,
                                 ));
                           }
+
                           final playing = snapshot.data!.playing;
                           final idle = snapshot.data!.processingState;
 
@@ -115,14 +116,17 @@ class Controller extends StatelessWidget {
                           } else if (playing == true) {
                             controll.animatewidget(true);
                           }
+
                           return InkWell(
                             onTap: () {
-                              if (playing) {
-                                controll.audioplayer.pause();
-                                controll.animatewidget(false);
+                              if (controll.isEntryplaybutton == true) {
+                                // nothing changes.
                               } else {
-                                controll.audioplayer.play();
-                                controll.animatewidget(true);
+                                if (playing) {
+                                  controll.audioplayer.pause();
+                                } else {
+                                  controll.audioplayer.play();
+                                }
                               }
                             },
                             child: CircleAvatar(
