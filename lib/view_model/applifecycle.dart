@@ -23,6 +23,12 @@ class _PlayerLifeCycleState extends State<PlayerLifeCycle>
   }
 
   @override
+  void dispose() {
+    log('disposed');
+    super.dispose();
+  }
+
+  @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
       log('paused');
@@ -31,9 +37,10 @@ class _PlayerLifeCycleState extends State<PlayerLifeCycle>
     } else if (state == AppLifecycleState.detached) {
       log('detached');
       WidgetsBinding.instance.removeObserver(this);
-      Get.delete<PlayerController>();
+
       PlayerController().audioplayer.dispose();
       PlayerController().animecontroller.dispose();
+      Get.delete<PlayerController>();
     }
 
     super.didChangeAppLifecycleState(state);

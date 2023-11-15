@@ -50,8 +50,6 @@ class PlayerController extends GetxController
 
   @override
   void onInit() async {
-    animecontroller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 40));
     await checkpermissionrequist();
 
     super.onInit();
